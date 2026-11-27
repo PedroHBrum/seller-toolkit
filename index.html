@@ -4,27 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etsy Fee & Profit Calculator (2026) — Seller Toolkit</title>
-    <meta name="description" content="Calculate your exact Etsy seller fees, Offsite Ads impact, and real profit margin in seconds. 100% browser-based, no data sent to servers.">
+    <meta name="description" content="Calculate your exact Etsy seller fees, Offsite Ads impact, minimum price for target profit margin, and real net profit. 100% browser-based.">
     <style>
         :root { --primary: #f1641e; --bg: #f8fafc; --card: #ffffff; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; margin: 0; padding: 20px; }
-        .container { max-width: 850px; margin: 0 auto; }
-        header { text-align: center; margin-bottom: 30px; }
+        .container { max-width: 880px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 28px; }
         h1 { margin-bottom: 8px; font-size: 2rem; color: #0f172a; }
         .subtitle { color: var(--muted); font-size: 1.05rem; margin-top: 0; }
         .privacy-badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; margin-top: 8px; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+        @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
         .card { background: var(--card); padding: 24px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        .form-group { margin-bottom: 16px; }
-        label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; }
-        input[type="number"], select { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; box-sizing: border-box; }
-        .checkbox-group { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; margin-top: 12px; }
+        .form-group { margin-bottom: 14px; }
+        label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 5px; }
+        input[type="number"], select { width: 100%; padding: 9px 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; box-sizing: border-box; }
+        .checkbox-group { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; margin-top: 10px; }
         .result-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
         .result-row.total { font-weight: 700; font-size: 1.1rem; border-top: 2px solid var(--border); border-bottom: none; padding-top: 12px; margin-top: 8px; }
-        .highlight-box { background: #f1f5f9; padding: 16px; border-radius: 8px; margin-top: 20px; text-align: center; }
-        .big-number { font-size: 2rem; font-weight: 800; display: block; }
-        footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); text-align: center; }
+        .highlight-box { background: #f1f5f9; padding: 16px; border-radius: 8px; margin-top: 16px; text-align: center; }
+        .big-number { font-size: 1.9rem; font-weight: 800; display: block; }
+        .target-box { background: #fff7ed; border: 1px solid #fed7aa; padding: 16px; border-radius: 8px; margin-top: 16px; }
+        .btn-print { width: 100%; margin-top: 16px; padding: 10px; background: #0f172a; color: #fff; border: none; border-radius: 6px; font-size: 0.95rem; font-weight: 600; cursor: pointer; }
+        .btn-print:hover { background: #334155; }
+        .guide-section { margin-top: 40px; background: var(--card); padding: 28px; border-radius: 12px; border: 1px solid var(--border); }
+        .guide-section h2 { margin-top: 0; font-size: 1.4rem; color: #0f172a; }
+        .guide-section h3 { font-size: 1.1rem; margin-bottom: 6px; color: #1e293b; }
+        footer { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); text-align: center; }
+        @media print {
+            .btn-print, .privacy-badge, .guide-section { display: none; }
+            body { background: #fff; padding: 0; }
+            .card { box-shadow: none; border: 1px solid #ccc; }
+        }
     </style>
 </head>
 <body>
@@ -33,7 +44,7 @@
     <header>
         <h1>Etsy Fee & Profit Calculator</h1>
         <p class="subtitle">Calculators that tell sellers what to price, what to title and what to stop doing.</p>
-        <span class="privacy-badge">🔒 100% Browser-Based: Your numbers never leave your device</span>
+        <span class="privacy-badge">100% Browser-Based: Your numbers never leave your device</span>
     </header>
 
     <div class="grid">
@@ -75,6 +86,14 @@
                 <input type="checkbox" id="currency-conversion">
                 <label for="currency-conversion" style="margin:0; font-weight:normal;">Apply 2.5% Currency Conversion Fee</label>
             </div>
+
+            <hr style="border:none; border-top:1px solid var(--border); margin: 18px 0;">
+
+            <div class="form-group" style="margin-bottom:0;">
+                <label for="target-margin">Target Net Profit Margin (%)</label>
+                <input type="number" id="target-margin" value="30" step="1" min="0" max="90">
+                <small style="color:var(--muted)">Used to calculate your minimum required item price.</small>
+            </div>
         </div>
 
         <!-- Coluna de Resultados -->
@@ -102,8 +121,35 @@
                     </div>
                 </div>
             </div>
+
+            <div class="target-box">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <span style="font-size:0.85rem; font-weight:700; color:#9a3412; display:block;">MINIMUM ITEM PRICE FOR TARGET MARGIN</span>
+                        <small id="res-recommended-note" style="color:#7c2d12;">Assuming $5.00 shipping charged to buyer.</small>
+                    </div>
+                    <strong id="res-recommended-price" style="font-size:1.5rem; color:#c2410c;">$0.00</strong>
+                </div>
+            </div>
+
+            <button class="btn-print" onclick="window.print()">Export / Save Scenario as PDF</button>
         </div>
     </div>
+
+    <!-- Guia de Leitura (Regra de Construção #4) -->
+    <section class="guide-section">
+        <h2>How to Read Your Etsy Fee Breakdown</h2>
+        <p>Many sellers price their items based only on material costs and get surprised when their payout arrives. Here is what each line in your calculation means:</p>
+        
+        <h3>1. Etsy Charges Fees on Shipping Too</h3>
+        <p>The <strong>6.5% transaction fee</strong> and <strong>3% + $0.25 payment processing fee</strong> apply to the <em>total amount</em> the buyer pays—including shipping. If you offer "Free Shipping," make sure your actual postage cost is baked into the Item Selling Price.</p>
+
+        <h3>2. The Offsite Ads Surprise (12% or 15%)</h3>
+        <p>When a buyer clicks an Etsy ad on Google, Facebook, or Pinterest and buys from your shop within 30 days, Etsy charges an extra 15% (or 12% if your shop made over $10,000 in the past 12 months), capped at $100 per order. Test your prices with Offsite Ads turned on in the calculator above to make sure a single ad click doesn't wipe out your profit.</p>
+
+        <h3>3. Using the Minimum Item Price Box</h3>
+        <p>If your current profit margin is below 25%–30%, it is difficult to run sales discounts or absorb occasional returns. Enter your ideal margin in the left panel to see the exact price tag required to protect your profit.</p>
+    </section>
 
     <footer>
         <p><strong>Fee Schedule Last Updated:</strong> <span id="last-updated"></span> | <a id="official-fees-link" href="#" target="_blank" rel="noopener">Verify on Official Etsy Fees Page</a></p>
