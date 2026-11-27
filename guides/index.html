@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etsy Seller Guides & Pricing Tutorials — Seller Toolkit</title>
     <meta name="description" content="Practical guides on Etsy seller fees, product pricing, Offsite Ads math, and print-on-demand profit margins.">
-<style>
+    <style>
+        :root { --bg: #f8fafc; --card: #ffffff; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; margin: 0; padding: 20px; }
+        .container { max-width: 820px; margin: 0 auto; }
+        nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; background: var(--card); padding: 14px 20px; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 24px; }
+        .brand { font-weight: 800; font-size: 1.1rem; color: #0f172a; text-decoration: none; }
         .menu-toggle { display: none; background: #f1f5f9; border: 1px solid var(--border); border-radius: 6px; padding: 6px 12px; font-size: 0.9rem; font-weight: 600; color: #0f172a; cursor: pointer; }
         .nav-links { display: flex; flex-wrap: wrap; gap: 18px; font-size: 0.92rem; }
         .nav-links a { color: var(--muted); text-decoration: none; font-weight: 500; }
@@ -15,7 +20,20 @@
             .nav-links { display: none; width: 100%; flex-direction: column; gap: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
             .nav-links.open { display: flex; }
         }
+        header { text-align: center; margin-bottom: 28px; }
+        h1 { margin-bottom: 8px; font-size: 1.9rem; color: #0f172a; }
+        .subtitle { color: var(--muted); margin-top: 0; }
+        .guide-card { display: block; background: var(--card); padding: 22px 24px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 16px; text-decoration: none; color: inherit; transition: border-color 0.15s; }
+        .guide-card:hover { border-color: #94a3b8; }
+        .tag { display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #c2410c; background: #fff7ed; padding: 3px 8px; border-radius: 4px; margin-bottom: 8px; }
+        .guide-card h2 { margin: 0 0 6px 0; font-size: 1.25rem; color: #0f172a; }
+        .guide-card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+        footer { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); text-align: center; }
+        footer a { color: var(--muted); text-decoration: none; margin: 0 8px; }
     </style>
+</head>
+<body>
+<div class="container">
     <nav>
         <a class="brand" href="../index.html">Seller Toolkit</a>
         <button class="menu-toggle" type="button" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Toggle navigation">☰ Menu</button>
@@ -47,7 +65,7 @@
     <footer>
         <div>
             <a href="../index.html">Fee Calculator</a>
-            <a href="../tools/offsite-ads.html">Offsite Ads Simulator</a>
+            <a href="../tools/index.html">Tools</a>
             <a href="index.html">Guides</a>
             <a href="../pages/about.html">About</a>
             <a href="../pages/privacy.html">Privacy Policy</a>
