@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etsy Offsite Ads Simulator & Opt-Out Calculator — Seller Toolkit</title>
+    <meta name="description" content="Compare your Etsy net profit with and without the 12% or 15% Offsite Ads fee. Find out if opting out makes financial sense for your shop.">
+    <style>
+        :root { --bg: #f8fafc; --card: #ffffff; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; margin: 0; padding: 20px; }
+        .container { max-width: 880px; margin: 0 auto; }
+        nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; background: var(--card); padding: 14px 20px; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 24px; }
+        .brand { font-weight: 800; font-size: 1.1rem; color: #0f172a; text-decoration: none; }
+        .nav-links { display: flex; flex-wrap: wrap; gap: 18px; font-size: 0.92rem; }
+        .nav-links a { color: var(--muted); text-decoration: none; font-weight: 500; }
+        .nav-links a:hover, .nav-links a.active { color: #0f172a; font-weight: 600; }
+        header { text-align: center; margin-bottom: 28px; }
+        h1 { margin-bottom: 8px; font-size: 2rem; color: #0f172a; }
+        .subtitle { color: var(--muted); font-size: 1.05rem; margin-top: 0; }
+        .privacy-badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; margin-top: 8px; }
+        .card { background: var(--card); padding: 24px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 24px; }
+        .input-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
+        label { display: block; font-weight: 600; font-size: 0.88rem; margin-bottom: 5px; }
+        input[type="number"], select { width: 100%; padding: 9px 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; box-sizing: border-box; }
+        .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 680px) { .compare-grid { grid-template-columns: 1fr; } }
+        .compare-card { background: var(--card); padding: 22px; border-radius: 12px; border: 1px solid var(--border); }
+        .compare-card.ad-side { border-color: #fed7aa; background: #fffaf5; }
+        .result-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.94rem; }
+        .big-metric { font-size: 1.8rem; font-weight: 800; margin-top: 12px; display: block; }
+        .verdict-box { padding: 18px; border-radius: 10px; margin-top: 20px; font-size: 0.96rem; border: 1px solid var(--border); background: #f1f5f9; }
+        .guide-section { margin-top: 36px; background: var(--card); padding: 28px; border-radius: 12px; border: 1px solid var(--border); }
+        footer { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); text-align: center; }
+        footer a { color: var(--muted); text-decoration: none; margin: 0 8px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <nav>
+        <a class="brand" href="../index.html">Seller Toolkit</a>
+        <div class="nav-links">
+            <a href="../index.html">Fee Calculator</a>
+            <a class="active" href="offsite-ads.html">Offsite Ads Simulator</a>
+            <a href="../pages/about.html">About</a>
+            <a href="../pages/privacy.html">Privacy Policy</a>
+            <a href="../pages/terms.html">Terms</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Etsy Offsite Ads Simulator</h1>
+        <p class="subtitle">Side-by-side profit comparison: Organic Sale vs. Offsite Ad Attributed Sale.</p>
+        <span class="privacy-badge">100% Browser-Based: Your numbers never leave your device</span>
+    </header>
+
+    <div class="card">
+        <h2 style="margin-top:0; font-size:1.15rem;">1. Enter Your Listing Numbers (USD)</h2>
+        <div class="input-grid">
+            <div>
+                <label for="oa-price">Item Selling Price ($)</label>
+                <input type="number" id="oa-price" value="30.00" step="0.01" min="0">
+            </div>
+            <div>
+                <label for="oa-shipping-charged">Shipping Charged ($)</label>
+                <input type="number" id="oa-shipping-charged" value="5.00" step="0.01" min="0">
+            </div>
+            <div>
+                <label for="oa-cost">Product + Shipping Cost ($)</label>
+                <input type="number" id="oa-cost" value="14.50" step="0.01" min="0">
+            </div>
+            <div>
+                <label for="oa-tier">Your Shop Revenue Tier</label>
+                <select id="oa-tier">
+                    <option value="15">Under $10k/yr (15% — Optional)</option>
+                    <option value="12">Over $10k/yr (12% — Mandatory)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="compare-grid">
+        <!-- Sem Offsite Ads -->
+        <div class="compare-card">
+            <span style="font-size:0.8rem; font-weight:700; text-transform:uppercase; color:#16a34a;">Scenario A: Organic / Direct Sale</span>
+            <h3 style="margin:4px 0 14px 0;">Without Offsite Ads</h3>
+            <div class="result-row"><span>Order Total:</span> <strong id="org-rev">$0.00</strong></div>
+            <div class="result-row"><span>Standard Etsy Fees:</span> <span id="org-fees">$0.00</span></div>
+            <div class="result-row"><span>Offsite Ads Fee:</span> <span>$0.00</span></div>
+            <div style="margin-top:14px;">
+                <span style="font-size:0.85rem; color:var(--muted);">NET PROFIT & MARGIN</span>
+                <span class="big-metric" id="org-profit" style="color:#16a34a;">$0.00 (0.0%)</span>
+            </div>
+        </div>
+
+        <!-- Com Offsite Ads -->
+        <div class="compare-card ad-side">
+            <span style="font-size:0.8rem; font-weight:700; text-transform:uppercase; color:#c2410c;">Scenario B: Ad Click Attribution</span>
+            <h3 style="margin:4px 0 14px 0;">With Offsite Ads (<span id="ad-rate-label">15%</span>)</h3>
+            <div class="result-row"><span>Order Total:</span> <strong id="ad-rev">$0.00</strong></div>
+            <div class="result-row"><span>Standard Etsy Fees:</span> <span id="ad-base-fees">$0.00</span></div>
+            <div class="result-row"><span>Offsite Ads Fee (Capped at $100):</span> <strong id="ad-extra-fee" style="color:#c2410c;">$0.00</strong></div>
+            <div style="margin-top:14px;">
+                <span style="font-size:0.85rem; color:var(--muted);">NET PROFIT & MARGIN</span>
+                <span class="big-metric" id="ad-profit">$0.00 (0.0%)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="verdict-box" id="verdict-box">
+        <strong>Simulation Verdict:</strong> <span id="verdict-text">Enter your product numbers above to evaluate your Offsite Ads buffer.</span>
+    </div>
+
+    <section class="guide-section">
+        <h2 style="margin-top:0; font-size:1.35rem;">Should You Opt Out of Etsy Offsite Ads?</h2>
+        <p>Etsy advertises listings on Google, Facebook, Instagram, and Pinterest at no upfront cost. You only pay the 15% (or 12%) fee when a shopper clicks an ad and buys from your shop within 30 days—even if they buy a different item from your store.</p>
+        <p><strong>When staying opted in makes sense:</strong> If your net profit margin after the 15% ad fee is still positive (for example, 10% to 20%+), Offsite Ads bring incremental sales you might not have captured organically.</p>
+        <p><strong>When opting out (or raising prices) is necessary:</strong> If Scenario B above turns red or leaves less than $1–$2 per order, a few ad-attributed orders can erase the profit of your organic sales. Either raise your base price using our <a href="../index.html">Etsy Fee & Profit Calculator</a> or opt out in your Shop Manager settings (available for shops under $10,000 in 12-month sales).</p>
+    </section>
+
+    <footer>
+        <div>
+            <a href="../index.html">Fee Calculator</a>
+            <a href="offsite-ads.html">Offsite Ads Simulator</a>
+            <a href="../pages/about.html">About</a>
+            <a href="../pages/privacy.html">Privacy Policy</a>
+            <a href="../pages/terms.html">Terms</a>
+        </div>
+        <p style="margin-top:10px;"><strong>Fee Schedule Last Updated:</strong> <span id="last-updated"></span> | <a id="official-fees-link" href="#" target="_blank" rel="noopener">Official Etsy Fees</a></p>
+        <p>Estimates only — not financial, accounting, or tax advice. Not affiliated with Etsy, Inc.</p>
+    </footer>
+</div>
+
+<script src="../rates.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("last-updated").textContent = ETSY_CONFIG.lastUpdated;
+    document.getElementById("official-fees-link").href = ETSY_CONFIG.officialUrl;
+
+    document.querySelectorAll("input, select").forEach(el => el.addEventListener("input", simulateAds));
+    simulateAds();
+});
+
+function simulateAds() {
+    const price = parseFloat(document.getElementById("oa-price").value) || 0;
+    const shipCharged = parseFloat(document.getElementById("oa-shipping-charged").value) || 0;
+    const totalCost = parseFloat(document.getElementById("oa-cost").value) || 0;
+    const tier = document.getElementById("oa-tier").value;
+
+    const rev = price + shipCharged;
+    const adRate = tier === "12" ? ETSY_CONFIG.offsiteAdsHighVolume : ETSY_CONFIG.offsiteAdsStandard;
+    document.getElementById("ad-rate-label").textContent = (adRate * 100).toFixed(0) + "%";
+
+    if (rev <= 0) return;
+
+    const baseFees = ETSY_CONFIG.listingFee + (rev * ETSY_CONFIG.transactionRate) + (rev * ETSY_CONFIG.processingRate) + ETSY_CONFIG.processingFixed;
+    const orgProfit = rev - totalCost - baseFees;
+    const orgMargin = (orgProfit / rev) * 100;
+
+    const offsiteFee = Math.min(rev * adRate, ETSY_CONFIG.offsiteAdsCap);
+    const adProfit = orgProfit - offsiteFee;
+    const adMargin = (adProfit / rev) * 100;
+
+    document.getElementById("org-rev").textContent = "$" + rev.toFixed(2);
+    document.getElementById("org-fees").textContent = "$" + baseFees.toFixed(2);
+    document.getElementById("org-profit").textContent = `$${orgProfit.toFixed(2)} (${orgMargin.toFixed(1)}%)`;
+
+    document.getElementById("ad-rev").textContent = "$" + rev.toFixed(2);
+    document.getElementById("ad-base-fees").textContent = "$" + baseFees.toFixed(2);
+    document.getElementById("ad-extra-fee").textContent = "$" + offsiteFee.toFixed(2);
+
+    const adProfitEl = document.getElementById("ad-profit");
+    adProfitEl.textContent = `$${adProfit.toFixed(2)} (${adMargin.toFixed(1)}%)`;
+    adProfitEl.style.color = adProfit < 0 ? "#dc2626" : "#16a34a";
+
+    const verdictEl = document.getElementById("verdict-text");
+    const boxEl = document.getElementById("verdict-box");
+
+    if (adProfit < 0) {
+        boxEl.style.background = "#fef2f2";
+        boxEl.style.borderColor = "#fecaca";
+        verdictEl.innerHTML = `<strong>Warning — Loss on Ad Orders:</strong> An Offsite Ad order costs you an extra <strong>$${offsiteFee.toFixed(2)}</strong>, turning your profit into a <strong>-$${Math.abs(adProfit).toFixed(2)} loss</strong>. Raise your price or consider opting out if your shop qualifies.`;
+    } else if (adMargin < 10) {
+        boxEl.style.background = "#fffbeb";
+        boxEl.style.borderColor = "#fde68a";
+        verdictEl.innerHTML = `<strong>Thin Buffer (${adMargin.toFixed(1)}% margin):</strong> You still make <strong>$${adProfit.toFixed(2)}</strong> on ad-attributed orders, but any extra coupon or discount could push this item into a loss.`;
+    } else {
+        boxEl.style.background = "#f0fdf4";
+        boxEl.style.borderColor = "#bbf7d0";
+        verdictEl.innerHTML = `<strong>Healthy Ad Buffer (${adMargin.toFixed(1)}% margin):</strong> Even after paying <strong>$${offsiteFee.toFixed(2)}</strong> for the ad click, you keep <strong>$${adProfit.toFixed(2)}</strong> net profit per order.`;
+    }
+}
+</script>
+</body>
+</html>
