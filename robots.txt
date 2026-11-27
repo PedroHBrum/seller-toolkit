@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://seller-toolkit.pedro89tr41.workers.dev/sitemap.xml
