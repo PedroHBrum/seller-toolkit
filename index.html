@@ -3,11 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seller Toolkit - Coming Soon</title>
+    <title>Etsy Fee & Profit Calculator (2026) — Seller Toolkit</title>
+    <meta name="description" content="Calculate your exact Etsy seller fees, Offsite Ads impact, and real profit margin in seconds. 100% browser-based, no data sent to servers.">
+    <style>
+        :root { --primary: #f1641e; --bg: #f8fafc; --card: #ffffff; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; margin: 0; padding: 20px; }
+        .container { max-width: 850px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 30px; }
+        h1 { margin-bottom: 8px; font-size: 2rem; color: #0f172a; }
+        .subtitle { color: var(--muted); font-size: 1.05rem; margin-top: 0; }
+        .privacy-badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; margin-top: 8px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+        .card { background: var(--card); padding: 24px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 16px; }
+        label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; }
+        input[type="number"], select { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; box-sizing: border-box; }
+        .checkbox-group { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; margin-top: 12px; }
+        .result-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+        .result-row.total { font-weight: 700; font-size: 1.1rem; border-top: 2px solid var(--border); border-bottom: none; padding-top: 12px; margin-top: 8px; }
+        .highlight-box { background: #f1f5f9; padding: 16px; border-radius: 8px; margin-top: 20px; text-align: center; }
+        .big-number { font-size: 2rem; font-weight: 800; display: block; }
+        footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); text-align: center; }
+    </style>
 </head>
 <body>
-    <h1>Etsy Seller Toolkit</h1>
-    <p>Calculators that tell sellers what to price, what to title and what to stop doing.</p>
-    <p>Status: Online via Cloudflare Pages!</p>
+
+<div class="container">
+    <header>
+        <h1>Etsy Fee & Profit Calculator</h1>
+        <p class="subtitle">Calculators that tell sellers what to price, what to title and what to stop doing.</p>
+        <span class="privacy-badge">🔒 100% Browser-Based: Your numbers never leave your device</span>
+    </header>
+
+    <div class="grid">
+        <!-- Coluna de Inputs -->
+        <div class="card">
+            <h2 style="margin-top:0; font-size:1.2rem;">1. Sale & Cost Details (USD)</h2>
+            
+            <div class="form-group">
+                <label for="item-price">Item Selling Price ($)</label>
+                <input type="number" id="item-price" value="30.00" step="0.01" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="shipping-charged">Shipping Charged to Buyer ($)</label>
+                <input type="number" id="shipping-charged" value="5.00" step="0.01" min="0">
+                <small style="color:var(--muted)">Set to $0 if you offer Free Shipping.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="item-cost">Product / Material / POD Cost ($)</label>
+                <input type="number" id="item-cost" value="10.00" step="0.01" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="shipping-cost">Your Actual Shipping Cost ($)</label>
+                <input type="number" id="shipping-cost" value="4.50" step="0.01" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="offsite-ads">Offsite Ads Attribution</label>
+                <select id="offsite-ads">
+                    <option value="0">None (Organic / Direct Sale)</option>
+                    <option value="15">15% Fee (Shops under $10k/year)</option>
+                    <option value="12">12% Fee (Shops over $10k/year)</option>
+                </select>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="currency-conversion">
+                <label for="currency-conversion" style="margin:0; font-weight:normal;">Apply 2.5% Currency Conversion Fee</label>
+            </div>
+        </div>
+
+        <!-- Coluna de Resultados -->
+        <div class="card">
+            <h2 style="margin-top:0; font-size:1.2rem;">2. Fee Breakdown & Net Profit</h2>
+            
+            <div class="result-row"><span>Total Order Revenue:</span> <strong id="res-revenue">$0.00</strong></div>
+            <div class="result-row"><span>Listing Fee ($0.20):</span> <span id="res-listing">$0.00</span></div>
+            <div class="result-row"><span>Transaction Fee (6.5%):</span> <span id="res-transaction">$0.00</span></div>
+            <div class="result-row"><span>Payment Processing (3% + $0.25):</span> <span id="res-processing">$0.00</span></div>
+            <div class="result-row"><span>Currency Conversion (2.5%):</span> <span id="res-conversion">$0.00</span></div>
+            <div class="result-row"><span>Offsite Ads Fee:</span> <span id="res-offsite">$0.00</span></div>
+            
+            <div class="result-row total"><span>Total Etsy Fees:</span> <span id="res-total-fees" style="color:#ea580c;">$0.00</span></div>
+
+            <div class="highlight-box">
+                <div style="display:flex; justify-content:space-around;">
+                    <div>
+                        <span style="font-size:0.85rem; color:var(--muted);">NET PROFIT</span>
+                        <span class="big-number" id="res-profit">$0.00</span>
+                    </div>
+                    <div>
+                        <span style="font-size:0.85rem; color:var(--muted);">PROFIT MARGIN</span>
+                        <span class="big-number" id="res-margin">0.0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>Fee Schedule Last Updated:</strong> <span id="last-updated"></span> | <a id="official-fees-link" href="#" target="_blank" rel="noopener">Verify on Official Etsy Fees Page</a></p>
+        <p><strong>Disclaimer:</strong> Calculations are estimates for planning purposes only and do not constitute financial or tax advice. Not affiliated with Etsy, Inc.</p>
+    </footer>
+</div>
+
+<script src="rates.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
