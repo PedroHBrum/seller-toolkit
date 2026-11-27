@@ -5,38 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How to Price Etsy Products So You Still Profit After Fees — Seller Toolkit</title>
     <meta name="description" content="Learn how to set Etsy prices backward from your target profit margin after accounting for product costs, shipping, and marketplace fees.">
-    <style>
-        :root { --bg: #f8fafc; --card: #ffffff; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; margin: 0; padding: 20px; }
-        .container { max-width: 820px; margin: 0 auto; }
-        nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; background: var(--card); padding: 14px 20px; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 24px; }
-        .brand { font-weight: 800; font-size: 1.1rem; color: #0f172a; text-decoration: none; }
-        .nav-links { display: flex; flex-wrap: wrap; gap: 18px; font-size: 0.92rem; }
-        .nav-links a { color: var(--muted); text-decoration: none; font-weight: 500; }
-        .nav-links a:hover, .nav-links a.active { color: #0f172a; font-weight: 600; }
-        article { background: var(--card); padding: 32px; border-radius: 12px; border: 1px solid var(--border); }
-        h1 { margin-top: 0; font-size: 1.9rem; line-height: 1.25; color: #0f172a; }
-        h2 { font-size: 1.3rem; margin-top: 28px; color: #0f172a; }
-        .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 20px; }
-        .cta-box { background: #fff7ed; border: 1px solid #fed7aa; padding: 18px; border-radius: 10px; margin: 24px 0; }
-        .cta-box a { color: #c2410c; font-weight: 700; }
-        ol { padding-left: 20px; }
-        li { margin-bottom: 10px; }
-        footer { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); text-align: center; }
-        footer a { color: var(--muted); text-decoration: none; margin: 0 8px; }
-    </style>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <div class="container">
     <nav>
         <a class="brand" href="../index.html">Seller Toolkit</a>
-        <div class="nav-links">
+        <button class="menu-toggle" type="button" onclick="document.getElementById('nav-links').classList.toggle('open')">☰ Menu</button>
+        <div class="nav-links" id="nav-links">
             <a href="../index.html">Fee Calculator</a>
-            <a href="../tools/offsite-ads.html">Offsite Ads Simulator</a>
-            <a class="active" href="how-to-price-etsy-products.html">Guides</a>
+            <a href="../tools/index.html">Tools</a>
+            <a class="active" href="index.html">Guides</a>
             <a href="../pages/about.html">About</a>
-            <a href="../pages/privacy.html">Privacy Policy</a>
-            <a href="../pages/terms.html">Terms</a>
         </div>
     </nav>
 
@@ -53,22 +33,19 @@
         <ol>
             <li><strong>Add up all direct costs:</strong> Include unit cost (materials or POD base + fulfillment), packaging supplies, and any unrecovered shipping cost.</li>
             <li><strong>Account for percentage fees on the full cart:</strong> Remember that transaction and payment processing fees apply to the total charged to the buyer, including shipping.</li>
-            <li><strong>Leave room for promos and ad attribution:</strong> If you run 15%–20% sales or get occasional Offsite Ads orders, a razor-thin 5% margin will disappear fast. Test stress scenarios in the <a href="../tools/offsite-ads.html">Etsy Offsite Ads Simulator</a>.</li>
-            <li><strong>Check perceived value in the market:</strong> Once you know your minimum profitable price, compare how your product stands out in quality, design, or customization before setting your final retail price.</li>
+            <li><strong>Leave room for promos and ad attribution:</strong> Test stress scenarios in the <a href="../tools/offsite-ads.html">Etsy Offsite Ads Simulator</a> before locking your retail price.</li>
+            <li><strong>Check perceived value in the market:</strong> Compare how your product stands out in quality, design, or customization once you know your floor price.</li>
         </ol>
 
-        <h2>Read the Full Fee Breakdown First</h2>
-        <p>If any line item on your payout statement looks unfamiliar, review <a href="../guides/index.html"">Etsy Fees Explained: What You Actually Keep From a Sale</a> before adjusting your catalog.</p>
-
-        <p style="margin-top:24px; font-size:0.9rem; color:var(--muted);">Always verify current fee schedules on the <a id="official-fees-link" href="#" target="_blank" rel="noopener">Official Etsy Fees Page</a>. Estimates are for planning purposes only and are not financial or tax advice.</p>
+        <p>Need a refresher on every fee line item? Read <a href="etsy-fees-explained.html">Etsy Fees Explained: What You Actually Keep From a Sale</a>.</p>
+        <p style="margin-top:24px; font-size:0.9rem; color:var(--muted);">Verify current fee schedules on the <a id="official-fees-link" href="#" target="_blank" rel="noopener">Official Etsy Fees Page</a>.</p>
     </article>
 
     <footer>
         <div>
             <a href="../index.html">Fee Calculator</a>
-            <a href="../tools/offsite-ads.html">Offsite Ads Simulator</a>
-            <a href="etsy-fees-explained.html">Etsy Fees Guide</a>
-            <a href="how-to-price-etsy-products.html">Pricing Guide</a>
+            <a href="../tools/index.html">Tools</a>
+            <a href="index.html">Guides</a>
             <a href="../pages/about.html">About</a>
             <a href="../pages/privacy.html">Privacy Policy</a>
             <a href="../pages/terms.html">Terms</a>
@@ -76,7 +53,6 @@
         <p style="margin-top:10px;">Estimates only — not financial, accounting, or tax advice. Not affiliated with Etsy, Inc.</p>
     </footer>
 </div>
-
 <script src="../rates.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
