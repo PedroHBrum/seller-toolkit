@@ -41,6 +41,15 @@
 <body>
 
 <div class="container">
+    <nav style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; background:var(--card); padding:14px 20px; border-radius:10px; border:1px solid var(--border); margin-bottom:24px;">
+        <a href="index.html" style="font-weight:800; font-size:1.1rem; color:#0f172a; text-decoration:none;">Seller Toolkit</a>
+        <div style="display:flex; flex-wrap:wrap; gap:18px; font-size:0.92rem;">
+            <a href="index.html" style="color:#0f172a; font-weight:600; text-decoration:none;">Fee Calculator</a>
+            <a href="pages/about.html" style="color:var(--muted); text-decoration:none;">About</a>
+            <a href="pages/privacy.html" style="color:var(--muted); text-decoration:none;">Privacy Policy</a>
+            <a href="pages/terms.html" style="color:var(--muted); text-decoration:none;">Terms</a>
+        </div>
+    </nav>
     <header>
         <h1>Etsy Fee & Profit Calculator</h1>
         <p class="subtitle">Calculators that tell sellers what to price, what to title and what to stop doing.</p>
@@ -152,6 +161,12 @@
     </section>
 
     <footer>
+        <div style="margin-bottom:10px;">
+            <a href="index.html" style="color:var(--muted); margin:0 8px; text-decoration:none;">Fee Calculator</a>
+            <a href="pages/about.html" style="color:var(--muted); margin:0 8px; text-decoration:none;">About</a>
+            <a href="pages/privacy.html" style="color:var(--muted); margin:0 8px; text-decoration:none;">Privacy Policy</a>
+            <a href="pages/terms.html" style="color:var(--muted); margin:0 8px; text-decoration:none;">Terms</a>
+        </div>
         <p><strong>Fee Schedule Last Updated:</strong> <span id="last-updated"></span> | <a id="official-fees-link" href="#" target="_blank" rel="noopener">Verify on Official Etsy Fees Page</a></p>
         <p><strong>Disclaimer:</strong> Calculations are estimates for planning purposes only and do not constitute financial or tax advice. Not affiliated with Etsy, Inc.</p>
     </footer>
