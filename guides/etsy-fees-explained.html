@@ -5,23 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etsy Fees Explained: What You Actually Keep From a Sale — Seller Toolkit</title>
     <meta name="description" content="A clear breakdown of Etsy listing fees, transaction fees, payment processing, currency conversion, and Offsite Ads so you know your real net profit.">
-<style>
-        .menu-toggle { display: none; background: #f1f5f9; border: 1px solid var(--border); border-radius: 6px; padding: 6px 12px; font-size: 0.9rem; font-weight: 600; color: #0f172a; cursor: pointer; }
-        .nav-links { display: flex; flex-wrap: wrap; gap: 18px; font-size: 0.92rem; }
-        .nav-links a { color: var(--muted); text-decoration: none; font-weight: 500; }
-        .nav-links a:hover, .nav-links a.active { color: #0f172a; font-weight: 600; }
-        @media (max-width: 680px) {
-            .menu-toggle { display: inline-block; }
-            .nav-links { display: none; width: 100%; flex-direction: column; gap: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
-            .nav-links.open { display: flex; }
-        }
-    </style>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <div class="container">
-<nav>
+    <nav>
         <a class="brand" href="../index.html">Seller Toolkit</a>
-        <button class="menu-toggle" type="button" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Toggle navigation">☰ Menu</button>
+        <button class="menu-toggle" type="button" onclick="document.getElementById('nav-links').classList.toggle('open')">☰ Menu</button>
         <div class="nav-links" id="nav-links">
             <a href="../index.html">Fee Calculator</a>
             <a href="../tools/index.html">Tools</a>
@@ -42,57 +32,31 @@
         <h2>The Core Etsy Seller Fees at a Glance</h2>
         <table>
             <thead>
-                <tr>
-                    <th>Fee Type</th>
-                    <th>Typical Rate (US)</th>
-                    <th>What It Applies To</th>
-                </tr>
+                <tr><th>Fee Type</th><th>Typical Rate (US)</th><th>What It Applies To</th></tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Listing Fee</td>
-                    <td>$0.20</td>
-                    <td>Each listing published or renewed (and each additional quantity sold on multi-quantity listings)</td>
-                </tr>
-                <tr>
-                    <td>Transaction Fee</td>
-                    <td>6.5%</td>
-                    <td>Total order amount charged to the buyer, including shipping and gift wrap</td>
-                </tr>
-                <tr>
-                    <td>Payment Processing</td>
-                    <td>3% + $0.25</td>
-                    <td>Total order amount processed through Etsy Payments (US baseline)</td>
-                </tr>
-                <tr>
-                    <td>Currency Conversion</td>
-                    <td>2.5%</td>
-                    <td>Orders where listing currency differs from your shop payment account currency</td>
-                </tr>
-                <tr>
-                    <td>Offsite Ads</td>
-                    <td>15% or 12%</td>
-                    <td>Attributed ad orders (capped at $100 per order), depending on shop revenue tier</td>
-                </tr>
+                <tr><td>Listing Fee</td><td>$0.20</td><td>Each listing published or renewed (plus renewals for extra quantity sold)</td></tr>
+                <tr><td>Transaction Fee</td><td>6.5%</td><td>Total order amount charged to the buyer, including shipping and gift wrap</td></tr>
+                <tr><td>Payment Processing</td><td>3% + $0.25</td><td>Total order amount processed through Etsy Payments (US baseline)</td></tr>
+                <tr><td>Currency Conversion</td><td>2.5%</td><td>Orders where listing currency differs from your shop payment currency</td></tr>
+                <tr><td>Offsite Ads</td><td>15% or 12%</td><td>Attributed ad orders (capped at $100 per order), depending on shop revenue tier</td></tr>
             </tbody>
         </table>
 
         <h2>Why Total Order Value Matters</h2>
-        <p>A common mistake is calculating percentage fees only on the <strong>item price</strong>. Etsy applies percentage fees to the total amount paid by the buyer. If you sell a $25 item and charge $5 for shipping, percentage fees are calculated on the full $30 order—not just $25.</p>
+        <p>A common mistake is calculating percentage fees only on the <strong>item price</strong>. Etsy applies percentage fees to the total amount paid by the buyer. If you sell a $25 item and charge $5 for shipping, percentage fees apply to the full $30 order.</p>
 
         <h2>Don't Forget Your Product and Shipping Costs</h2>
-        <p>Etsy fees are only half of the equation. To find your true net profit, you must subtract both Etsy fees <em>and</em> your out-of-pocket costs—materials, blanks, print-on-demand (POD) fulfillment, packaging, and the actual postage label you buy.</p>
-        <p>If an order comes through an external ad, check how that extra fee affects your cushion using the <a href="../tools/offsite-ads.html">Etsy Offsite Ads Simulator</a>.</p>
+        <p>To find your true net profit, subtract both Etsy fees <em>and</em> your direct costs (materials or POD fulfillment, packaging, and actual postage). Test ad-attributed orders with the <a href="../tools/offsite-ads.html">Etsy Offsite Ads Simulator</a>.</p>
 
-        <p style="margin-top:24px; font-size:0.9rem; color:var(--muted);">Always verify current fee rules on the <a id="official-fees-link" href="#" target="_blank" rel="noopener">Official Etsy Fees Page</a>. Estimates are for planning purposes only and are not financial or tax advice.</p>
+        <p style="margin-top:24px; font-size:0.9rem; color:var(--muted);">Verify current rules on the <a id="official-fees-link" href="#" target="_blank" rel="noopener">Official Etsy Fees Page</a>. Estimates only — not financial or tax advice.</p>
     </article>
 
     <footer>
         <div>
             <a href="../index.html">Fee Calculator</a>
-            <a href="../tools/offsite-ads.html">Offsite Ads Simulator</a>
-            <a href="etsy-fees-explained.html">Etsy Fees Guide</a>
-            <a href="how-to-price-etsy-products.html">Pricing Guide</a>
+            <a href="../tools/index.html">Tools</a>
+            <a href="index.html">Guides</a>
             <a href="../pages/about.html">About</a>
             <a href="../pages/privacy.html">Privacy Policy</a>
             <a href="../pages/terms.html">Terms</a>
@@ -100,7 +64,6 @@
         <p style="margin-top:10px;">Estimates only — not financial, accounting, or tax advice. Not affiliated with Etsy, Inc.</p>
     </footer>
 </div>
-
 <script src="../rates.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
